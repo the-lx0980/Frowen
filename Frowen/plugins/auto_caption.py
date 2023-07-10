@@ -1,6 +1,6 @@
 # Lx 0980
 
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 
 CAPTION_DATA = {}
 
@@ -21,4 +21,19 @@ async def set_caption(bot, message):
     await message.reply_text(f"Caption Successfully Set! ✅\n\n {caption}")
     
 
-
+@Client.on_message(filters.channel & (filters.video | filters.document))
+async def auto_captuon(update, message):
+    channel_id = str(message.chat.id)
+    caption = CAPTION_DATA.get(channel_id)
+    try:
+        m_caption = caption.get("caption")
+    except:
+        m_caption = "@DefaultCaption" # @DefaultCaption
+        pass
+    await update.send_message(
+        chat_id=message.chat id,
+        text=f"Here is your caption {m_caption}"
+    )
+    
+    
+    
