@@ -15,8 +15,5 @@ frowen = Client(
     }
 )
 
-frowen.run()
-
-
-
+print("Bot started!")
 frowen.run()
