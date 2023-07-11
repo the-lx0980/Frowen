@@ -1,7 +1,7 @@
 # (c) Lx 0980
 # Yeat : 2023
 
-from Frowen import API_ID, API_HASH, BOT_TOKEN
+from Frowen import API_ID, API_HASH, USER_SESSION, BOT_TOKEN
 
 from pyrogram import Client, idle
 
@@ -19,7 +19,7 @@ User = Client(
     "User-Bot",
     api_id=API_ID,
     api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
+    session_string=USER_SESSION,
     plugins={
         'root': 'Frowen.plugins'
     }
