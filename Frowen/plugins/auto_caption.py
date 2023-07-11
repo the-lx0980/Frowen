@@ -6,7 +6,7 @@ CAPTION_DATA = {}
 
 @Client.on_message(filters.channel & filters.command("set"))
 async def set_caption(bot, message):
-    caption = await bot.message.chat.ask("Send me Your Channel Caption", parse_mode=enums.ParseMode.HTML)
+    caption = await message.chat.ask("Send me Your Channel Caption", parse_mode=enums.ParseMode.HTML)
     if not caption:
         return await message.reply_text("Error!\n Try Again 🌐")
     channel_id = str(message.chat.id)
