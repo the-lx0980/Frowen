@@ -4,12 +4,13 @@ from pyrogram import Client, filters, enums
 
 CAPTION_DATA = {}
 
-@Client.on_message(filters.channel & filters.command("set"))
-async def set_caption(bot, message):
-    caption = await message.chat.ask("Send me Your Channel Caption", parse_mode=enums.ParseMode.HTML)
+@Client.on_message(filters.command("set"))
+async def set_caption(client, message):
+    caption = await client.message.chat.ask("Send me Your Channel Caption", parse_mode=enums.ParseMode.HTML)
+    caption = caption.text
     if not caption:
         return await message.reply_text("Error!\n Try Again 🌐")
-    channel_id = str(message.chat.id)
+    channel_id = str(-1001547532818)
     CAPTION_DATA[channel_id] = {
         "caption": caption
     }
@@ -34,5 +35,5 @@ async def auto_caption(bot, message):
         text=f"Here is your caption: {m_caption}"
     )
 
-    
+
     
